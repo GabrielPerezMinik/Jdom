@@ -1,6 +1,7 @@
 package jdom;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 public class Main {
 
@@ -20,19 +23,34 @@ public class Main {
 		List<Element> habitacionlist=root.getChildren();
 		
 		
-		for (Element habitacion : habitacionlist) {
+		for (Element habitacion : habitacionlist) {		
+				
+			System.out.println(habitacion.getChildTextTrim("codHotel"));
 			
-			for (Element element : habitacion.getChildren()) {
-				System.out.println(element.getName());
-			System.out.println(element.getChildText("codHabitacion"));
-			System.out.println(element.getChildText("codHotel"));
-			System.out.println(element.getChildText("numHabitacion"));
-			System.out.println(element.getChildText("capacidad"));
-			System.out.println(element.getChildText("preciodia"));
-			System.out.println(element.getChildText("activa"));
+			for (Element element : habitacionlist) {
+				
+			System.out.println(habitacion.getChildTextTrim("Estancias"));
+			System.out.println(habitacion.getChildTextTrim("Cliente"));
 			}
 		}
 
+//		escribirXml();
+		
 	}
 
+	
+//	public static void escribirXml() throws IOException {
+//		
+//		Element root=new Element("Habitaciones");
+//		Document habitacionDocument=new Document(root);
+//		Element habitacion=new Element("habitacion");
+//		Element codHabitacion= new Element("codHabitacion");
+//		codHabitacion.setText("123456");
+//		habitacion.addContent(codHabitacion);
+//		root.addContent(habitacion);
+//		XMLOutputter salida=new XMLOutputter();
+//		salida.setFormat(Format.getPrettyFormat());
+//		salida.output(habitacionDocument, new FileWriter("habitacion2.xml"));
+//	}
+	
 }
